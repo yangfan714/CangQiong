@@ -1,0 +1,70 @@
+# IDE files
+.idea/
+*.iml
+.vscode/
+
+# Compiled files
+target/
+*.class
+
+# Sensitive configuration files
+**/application-dev.yml
+**/application-prod.yml
+**/application-test.yml
+
+# Logs
+*.log
+logs/
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Package Files
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Help file
+HELP.md
+
+# STS
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+# NetBeans
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+# VS Code
+.vscode/
+
+# Maven wrapper
+!.mvn/wrapper/maven-wrapper.jar
+
+# Exclude specific targets
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Application properties
+**/src/main/resources/application-dev.yml
+**/src/main/resources/application-prod.yml
+**/src/main/resources/application-test.yml
+
+# Maven
+.m2/ 
