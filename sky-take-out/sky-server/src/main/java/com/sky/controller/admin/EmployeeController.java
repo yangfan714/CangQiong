@@ -26,7 +26,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/admin/employee")
 @Slf4j
-@Api(tags = "员工相关接口")
+@Api(tags="员工相关接口·快哉快哉")
 public class EmployeeController {
 
     @Autowired
@@ -34,17 +34,18 @@ public class EmployeeController {
     @Autowired
     private JwtProperties jwtProperties;
 
+
     /**
      * 登录
      *
      * @param employeeLoginDTO
      * @return
      */
+    @ApiOperation(value = "员工登录gogogo")
     @PostMapping("/login")
-    @ApiOperation(value = "员工登录")
     public Result<EmployeeLoginVO> login(@RequestBody EmployeeLoginDTO employeeLoginDTO) {
         log.info("员工登录：{}", employeeLoginDTO);
-
+        System.out.println("查看前端给你的接口的总种类：https://yapi.pro/group");
         Employee employee = employeeService.login(employeeLoginDTO);
 
         //登录成功后，生成jwt令牌
@@ -70,74 +71,50 @@ public class EmployeeController {
      *
      * @return
      */
+    @ApiOperation(value = "员工退出")
     @PostMapping("/logout")
-    @ApiOperation("员工退出")
     public Result<String> logout() {
         return Result.success();
     }
 
-    /**
-     * 新增员工
-     * @param employeeDTO
-     * @return
-     */
     @PostMapping
     @ApiOperation("新增员工")
-    public Result save(@RequestBody EmployeeDTO employeeDTO){
-        log.info("新增员工：{}",employeeDTO);
-        employeeService.save(employeeDTO);
+    public Result save(@RequestBody EmployeeDTO employeedto) {
+        log.info("新增员工：{}", employeedto);
+        System.out.println("当前Controller线程的ID想不想知道是多少，扣2给答案:"+Thread.currentThread().getId());
+        employeeService.save(employeedto);
         return Result.success();
     }
 
-    /**
-     * 员工分页查询
-     * @param employeePageQueryDTO
-     * @return
-     */
     @GetMapping("/page")
-    @ApiOperation("员工分页查询")
-    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO){
-        log.info("员工分页查询，参数为：{}", employeePageQueryDTO);
-        PageResult pageResult = employeeService.pageQuery(employeePageQueryDTO);
+    @ApiOperation("员工分页显示")
+    public Result<PageResult> page(EmployeePageQueryDTO employeePageQueryDTO) {
+        log.info("员工分页查询的话，他的参数为：{}", employeePageQueryDTO);
+        PageResult pageResult=employeeService.pageQuery(employeePageQueryDTO);
         return Result.success(pageResult);
     }
 
-    /**
-     * 启用禁用员工账号
-     * @param status
-     * @param id
-     * @return
-     */
     @PostMapping("/status/{status}")
-    @ApiOperation("启用禁用员工账号")
-    public Result startOrStop(@PathVariable Integer status,Long id){
-        log.info("启用禁用员工账号：{},{}",status,id);
-        employeeService.startOrStop(status,id);
+    @ApiOperation("启禁用牛马账号")
+    public Result startOrstop(@PathVariable Integer status,Long id) {
+        log.info("start end employee account：{},{}",status,id);
+        employeeService.startOrstop(status,id);
         return Result.success();
     }
 
-    /**
-     * 根据id查询员工信息
-     * @param id
-     * @return
-     */
     @GetMapping("/{id}")
-    @ApiOperation("根据id查询员工信息")
-    public Result<Employee> getById(@PathVariable Long id){
-        Employee employee = employeeService.getById(id);
+    @ApiOperation("根据员工id查询员工")
+    public Result<Employee> getById(@PathVariable Long id) {
+        Employee employee=employeeService.getById(id);
         return Result.success(employee);
     }
 
-    /**
-     * 编辑员工信息
-     * @param employeeDTO
-     * @return
-     */
     @PutMapping
     @ApiOperation("编辑员工信息")
-    public Result update(@RequestBody EmployeeDTO employeeDTO){
+    public Result update(@RequestBody EmployeeDTO employeeDTO) {
         log.info("编辑员工信息：{}", employeeDTO);
         employeeService.update(employeeDTO);
         return Result.success();
     }
+
 }
